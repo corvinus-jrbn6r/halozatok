@@ -1,0 +1,100 @@
+﻿body {
+    background-color: lightpink;
+    text-align: left;
+    color: dimgray;
+    font-family: Bahnschrift;
+}
+span {
+    font-style: italic;
+    font-weight:900;
+}
+
+h1{
+    font-weight:800;
+    font-family:'Vladimir Script';
+    font-size:50px;
+}
+
+h1, h2{
+    text-decoration:underline;
+}
+
+a {
+    background-color: darkslategrey;
+    border-radius: 20px;
+    color: white;
+    font-size: 1.3em;
+    text-decoration: none;
+    padding: 3px;
+    margin: 10px;
+}
+
+a:hover{
+    background-color:ghostwhite;
+    color:aqua;
+}
+
+#alapadatok{
+    border:1px dashed black;
+    padding:5px;
+    border-radius:20px;
+    width:350px;
+    background-color:rgba(211,2,4,0.3);
+    margin:10px;
+}
+
+#alapadatok h2{
+    color:darkslategray;
+    font-size:30px;
+}
+
+#nagydoboz {
+    border: 2px solid white;
+    background-color: rgba(122,23,67,0.4);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    color: darkslategray;
+}
+
+.cim{
+    font-size:35px;
+    text-decoration:none;
+
+}
+
+.vonal{
+    border-color:paleturquoise;
+    border-width:3px;
+}
+
+#hobbi{
+    background-color:rgba(200,200,200,0.6);
+    padding:5px;
+    border:2px groove black;
+}
+
+.etel{
+    background-color:antiquewhite;
+    border-radius:20px;
+    text-decoration:none;
+    padding:10px;
+}
+
+.levess{
+    color:gold;
+    font-weight:bold;
+    font-style:italic;
+}
+
+ul {
+    list-style-type:georgian;
+}
+
+img{
+    float:right;
+    width:600px;
+    border:6px solid fuchsia;
+    border-radius:15px;
+    display:block;
+}
