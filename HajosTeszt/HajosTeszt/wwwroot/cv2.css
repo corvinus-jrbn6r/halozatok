@@ -1,0 +1,172 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+#article,
+#aside,
+#footer,
+#header,
+#nav {
+    padding: 20px;
+}
+
+body {
+    font-weight: bold;
+    text-align: left;
+}
+
+#header {
+    background-color: tomato;
+}
+
+#nav {
+    background-color: deepskyblue;
+    display: flex;
+    text-align: center;
+}
+
+    #nav a {
+        text-decoration: none;
+        color: black;
+        flex: 1 1 auto;
+    }
+
+#article {
+    background-color: gold;
+    text-align: left;
+}
+
+#aside {
+    background-color: lightgreen;
+}
+
+#footer {
+    background-color: hotpink;
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main {
+        display: flex;
+    }
+
+    #nav, #header {
+        order: -1;
+    }
+
+    #article {
+        flex: 1 1;
+    }
+
+    #aside {
+        flex: 1 1 25%;
+    }
+}
+body {
+    background-color: lightpink;
+    text-align: left;
+    color: dimgray;
+    font-family: Bahnschrift;
+}
+
+span {
+    font-style: italic;
+    font-weight: 900;
+}
+
+h1 {
+    font-weight: 800;
+    font-family: 'Vladimir Script';
+    font-size: 50px;
+}
+
+h1, h2 {
+    text-decoration: underline;
+}
+
+a {
+    background-color: darkslategrey;
+    border-radius: 20px;
+    color: white;
+    font-size: 1.3em;
+    text-decoration: none;
+    padding: 3px;
+    margin: 10px;
+}
+
+    a:hover {
+        background-color: ghostwhite;
+        color: aqua;
+    }
+
+#alapadatok {
+    border: 1px dashed black;
+    padding: 5px;
+    border-radius: 20px;
+    width: 350px;
+    background-color: rgba(211,2,4,0.3);
+    margin: 10px;
+}
+
+    #alapadatok h2 {
+        color: darkslategray;
+        font-size: 30px;
+    }
+
+#nagydoboz {
+    border: 2px solid white;
+    background-color: rgba(122,23,67,0.4);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    color: darkslategray;
+    display:flex;
+    flex-direction:column;
+}
+
+.cim {
+    font-size: 35px;
+    text-decoration: none;
+}
+
+.vonal {
+    border-color: paleturquoise;
+    border-width: 3px;
+}
+
+#hobbi {
+    background-color: rgba(200,200,200,0.6);
+    padding: 5px;
+    border: 2px groove black;
+}
+
+.etel {
+    background-color: antiquewhite;
+    border-radius: 20px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.levess {
+    color: gold;
+    font-weight: bold;
+    font-style: italic;
+}
+
+ul {
+    list-style-type: georgian;
+}
+
+img {
+    float: right;
+    width: 250px;
+    border: 6px solid fuchsia;
+    border-radius: 15px;
+    display: block;
+}
