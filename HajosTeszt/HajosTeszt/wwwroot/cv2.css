@@ -1,5 +1,5 @@
 ﻿* {
-    box-sizing: border-box;
+    box-sizing:border-box;
 }
 
 #article,
@@ -16,58 +16,44 @@ body {
 }
 
 #header {
-    background-color: tomato;
+    background-color: rgb(6, 238, 161);
 }
 
 #nav {
-    background-color: deepskyblue;
+    background-color: rgb(89, 220, 230);
     display: flex;
     text-align: center;
 }
 
-    #nav a {
+ #nav a{
         text-decoration: none;
         color: black;
         flex: 1 1 auto;
-    }
+        padding: 10px;
+  }
+
+
+#nav a:hover {
+    background-color: rgb(112, 202, 230);
+    border: 2px dashed rgb(173, 135, 223);
+}
 
 #article {
-    background-color: gold;
+    background-color: lightpink;
     text-align: left;
 }
 
 #aside {
-    background-color: lightgreen;
+    border: 2px solid rgb(160, 82, 130);
+    border-radius: 20px;
 }
 
 #footer {
     background-color: hotpink;
+    text-align: center;
 }
 
-@media screen and (min-width: 800px) {
-    body {
-        display: flex;
-        flex-direction: column;
-        max-width: 1500px;
-        margin: auto;
-    }
 
-    #main {
-        display: flex;
-    }
-
-    #nav, #header {
-        order: -1;
-    }
-
-    #article {
-        flex: 1 1;
-    }
-
-    #aside {
-        flex: 1 1 25%;
-    }
-}
 body {
     background-color: lightpink;
     text-align: left;
@@ -90,7 +76,7 @@ h1, h2 {
     text-decoration: underline;
 }
 
-a {
+a.facebook {
     background-color: darkslategrey;
     border-radius: 20px;
     color: white;
@@ -100,7 +86,7 @@ a {
     margin: 10px;
 }
 
-    a:hover {
+    a.facebook:hover {
         background-color: ghostwhite;
         color: aqua;
     }
@@ -126,8 +112,6 @@ a {
     padding: 10px;
     margin: 10px;
     color: darkslategray;
-    display:flex;
-    flex-direction:column;
 }
 
 .cim {
@@ -164,9 +148,39 @@ ul {
 }
 
 img {
-    float: right;
-    width: 250px;
+    float: inherit;
+    width: 40%;
     border: 6px solid fuchsia;
     border-radius: 15px;
     display: block;
+    margin: 20px;
 }
+
+@media screen and (min-width: 800px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main {
+        display: flex;
+    }
+
+    #nav, #header {
+        order: -1;
+    }
+
+    #article {
+        flex: 1 1;
+    }
+
+    #aside {
+        flex: 1 1 30%;
+    }
+}
+
+
+
+
