@@ -15,8 +15,13 @@ function letöltésBefejeződött(d) {
     kérdésMegjelenítés(0)
 }
 
+fetch('/questions/1')
+    .then(response => response.json())
+    .then(data => kérdésMegjelenítés(data)
+    );
 
 function kérdésMegjelenítés(kérdés) {
+    console.log(kérdés);
     document.getElementById("kérdés_szöveg").innerHTML = kérdések[kérdés].questionText;
     document.getElementById("válasz1").innerHTML = kérdések[kérdés].answer1;
     document.getElementById("válasz2").innerHTML = kérdések[kérdés].answer2;
@@ -24,11 +29,24 @@ function kérdésMegjelenítés(kérdés) {
     document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kérdések[kérdés].image;
 }
 
+function kérdésBetöltés(id) {
+    fetch(`/questions/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Hibás válasz: ${response.status}`)
+            }
+            else {
+                return response.json()
+            }
+        })
+        .then(data => kérdésMegjelenítés(data));
+}    
+
 window.onload = function () {
     letöltés();
    
 
-    document.getElementById("előre").onclick = function előre() {
+    document.getElementById("vissza").onclick = function előre() {
         if (kérdés == 2) {
             kérdés = 0;
         }
@@ -46,7 +64,7 @@ window.onload = function () {
         document.getElementById("válasz3").style.pointerEvents = "initial";
     }
 
-    document.getElementById("vissza").onclick = function vissza() {
+    document.getElementById("előre").onclick = function vissza() {
         if (kérdés == 0) {
             kérdés = 2;
         }
