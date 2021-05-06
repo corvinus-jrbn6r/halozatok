@@ -1,12 +1,17 @@
 ﻿var kérdések;
 var kérdés = 0;
 
-function letöltés() {
-fetch('/questions.json')
-    .then(response => response.json())
-    .then(data => letöltésBefejeződött(data)
-    );
-}
+function kérdésBetöltés(id) {
+    fetch(`/questions/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Hibás válasz: ${response.status}`)
+            }
+            else {
+                kérdésMegjelenítés(response.json())
+            }
+        })
+}  
 
 function letöltésBefejeződött(d) {
     console.log("Sikeres letöltés")
@@ -15,18 +20,27 @@ function letöltésBefejeződött(d) {
     kérdésMegjelenítés(0)
 }
 
-fetch('/questions/1')
-    .then(response => response.json())
-    .then(data => kérdésMegjelenítés(data)
-    );
+
 
 function kérdésMegjelenítés(kérdés) {
+    if (!kérdés) return; //Ha undefined a kérdés objektum, nincs mit tenni
     console.log(kérdés);
-    document.getElementById("kérdés_szöveg").innerHTML = kérdések[kérdés].questionText;
-    document.getElementById("válasz1").innerHTML = kérdések[kérdés].answer1;
-    document.getElementById("válasz2").innerHTML = kérdések[kérdés].answer2;
-    document.getElementById("válasz3").innerHTML = kérdések[kérdés].answer3;
-    document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kérdések[kérdés].image;
+    document.getElementById("kérdés_szöveg").innerText = kérdés.questionText
+    document.getElementById("válasz1").innerText = kérdés.answer1
+    document.getElementById("válasz2").innerText = kérdés.answer2
+    document.getElementById("válasz3").innerText = kérdés.answer3
+    jóVálasz = kérdés.correctAnswer;
+    if (kérdés.image) {
+        document.getElementById("kép").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
+        document.getElementById("kép").classList.remove("rejtett")
+    }
+    else {
+        document.getElementById("kép").classList.add("rejtett")
+    }
+    //Jó és rossz kérdések jelölésének levétele
+    document.getElementById("válasz1").classList.remove("jó", "rossz");
+    document.getElementById("válasz2").classList.remove("jó", "rossz");
+    document.getElementById("válasz3").classList.remove("jó", "rossz");
 }
 
 function kérdésBetöltés(id) {
@@ -42,88 +56,19 @@ function kérdésBetöltés(id) {
         .then(data => kérdésMegjelenítés(data));
 }    
 
-window.onload = function () {
-    letöltés();
-   
+window.onload = function (e) {
+    console.log("Oldal betöltve...");
+    document.getElementById("előre_gomb").onclick = előre;
+    document.getElementById("vissza_gomb").onclick = vissza;
+    kérdésBetöltés(questionId)
+}
 
-    document.getElementById("vissza").onclick = function előre() {
-        if (kérdés == 2) {
-            kérdés = 0;
-        }
-        else {
-            kérdés++;
-        }
-        console.log()
-        kérdésMegjelenítés(kérdés);
-        document.getElementById("válasz1").style.background = "initial";
-        document.getElementById("válasz2").style.background = "initial";
-        document.getElementById("válasz3").style.background = "initial";
-
-        document.getElementById("válasz1").style.pointerEvents = "initial";
-        document.getElementById("válasz2").style.pointerEvents = "initial";
-        document.getElementById("válasz3").style.pointerEvents = "initial";
+function választás(n) {
+    if (n != jóVálasz) {
+        document.getElementById(`válasz${n}`).classList.add("rossz");
+        document.getElementById(`válasz${jóVálasz}`).classList.add("jó");
     }
-
-    document.getElementById("előre").onclick = function vissza() {
-        if (kérdés == 0) {
-            kérdés = 2;
-        }
-        else {
-            kérdés--;
-        }
-        kérdésMegjelenítés(kérdés);
-        document.getElementById("válasz1").style.background = "initial";
-        document.getElementById("válasz2").style.background = "initial";
-        document.getElementById("válasz3").style.background = "initial";
-
-        document.getElementById("válasz1").style.pointerEvents = "initial";
-        document.getElementById("válasz2").style.pointerEvents = "initial";
-        document.getElementById("válasz3").style.pointerEvents = "initial";
-    }
-
-    document.getElementById("válasz1").onclick = () => {
-
-        if (kérdések[kérdés].correctAnswer == 1) {
-            document.getElementById("válasz1").style.background = "darkgreen";
-        }
-        else {
-            document.getElementById("válasz1").style.background = "red";
-            document.getElementById("válasz" + kérdések[kérdés].correctAnswer).style.background = "darkgreen";
-        }
-
-       document.getElementById("válasz1").style.pointerEvents = 'none';
-        document.getElementById("válasz2").style.pointerEvents = 'none';
-        document.getElementById("válasz3").style.pointerEvents = 'none';
-
-    }
-
-    document.getElementById("válasz2").onclick = () => {
-
-        if (kérdések[kérdés].correctAnswer == 2) {
-            document.getElementById("válasz2").style.background = "darkgreen";
-        }
-        else {
-            document.getElementById("válasz2").style.background = "red";
-            document.getElementById("válasz" + kérdések[kérdés].correctAnswer).style.background = "darkgreen";
-        }
-
-        document.getElementById("válasz1").style.pointerEvents = 'none';
-        document.getElementById("válasz2").style.pointerEvents = 'none';
-        document.getElementById("válasz3").style.pointerEvents = 'none';
-    }
-
-    document.getElementById("válasz3").onclick = () => {
-
-        if (kérdések[kérdés].correctAnswer == 3) {
-            document.getElementById("válasz3").style.background = "darkgreen";
-        }
-        else {
-            document.getElementById("válasz3").style.background = "red";
-            document.getElementById("válasz" + kérdések[kérdés].correctAnswer).style.background = "darkgreen";
-        }
-
-        document.getElementById("válasz1").style.pointerEvents = 'none';
-        document.getElementById("válasz2").style.pointerEvents = 'none';
-        document.getElementById("válasz3").style.pointerEvents = 'none';
+    else {
+        document.getElementById(`válasz${jóVálasz}`).classList.add("jó");
     }
 }

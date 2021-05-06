@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link href="hajo.css" rel="stylesheet" />
-    <script src="hetedik.js"></script>
+    <script src="tizenegyedik.js"></script>
     <title>Hajós teszt</title>
 </head>
 <body>
@@ -15,25 +15,25 @@
         <div id="középső">
 
             <div id="válaszok">
-                <div id="válasz1" class="kerdes kattintható rossz">
+                <div id="válasz1" onclick="választás(1)" class="kerdes kattintható">
                     válasz1
                 </div>
-                <div id="válasz2" class="kerdes kattintható jó">
+                <div id="válasz2" onclick="választás(2)" class="kerdes kattintható">
                     válasz2
                 </div>
-                <div id="válasz3" class="kerdes kattintható rossz">
+                <div id="válasz3"  onclick="választás(3)" class="kerdes kattintható">
                     válasz3
                 </div>
             </div>
 
-            <div id="kép">
-                <img id="kép1" src="https://szoft1.comeback.hu/hajo/teszt-0081.jpg" />
+            <div id="kép_keret">
+                <img id="kép" src="" />
             </div>
 
         </div>
         <div id="vezérlő">
-            <div id="előre" class="gomb kattintható">Vissza</div>
-            <div id="vissza" class="gomb kattintható">Előre</div>
+            <div id="vissza_gomb" class="gomb kattintható">Vissza</div>
+            <div id="előre_gomb" class="gomb kattintható">Előre</div>
         </div>
     </div>
    
