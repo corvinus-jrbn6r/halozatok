@@ -40,7 +40,7 @@ function init() {
     }
 
     //kezdő krédéslista letöltése
-    if (hotList.length === 0) {
+    if (!localStorage.getItem("hotList")) {
         for (let i = 0; i < questionsInHotList; i++) {
             kérdésBetöltés(nextQuestion, i);
             nextQuestion++;
@@ -88,7 +88,7 @@ function KérdésMegjelenítés() {
 
     if (kérdés.image) {
         document.getElementById("kép").src = kérdés.image;
-        document.getElementById("kép").style.diplay = "block";
+        document.getElementById("kép").style.display = "block";
     }
     else {
         document.getElementById("kép").style.diplay = "none";
