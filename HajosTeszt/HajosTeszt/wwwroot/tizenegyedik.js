@@ -91,7 +91,7 @@ function KérdésMegjelenítés() {
         document.getElementById("kép").style.display = "block";
     }
     else {
-        document.getElementById("kép").style.diplay = "none";
+        document.getElementById("kép").style.display = "none";
     }
 
     for (var i = 1; i < 4; i++) {
